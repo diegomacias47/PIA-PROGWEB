@@ -1,0 +1,36 @@
+﻿body {
+    background: rgb(24,23,36);
+    background: radial-gradient(circle, rgba(24,23,36,1) 37%, rgba(13,13,22,1) 84%);
+}
+
+
+.nav-login {
+    text-align: center;
+    background-color: #d60235;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0px 0px 10px 0px #000 inset;
+    box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 20px;
+    border-bottom-color: white;
+}
+
+.nav-titulo {
+    color: white;
+    font-weight: bold;
+}
+
+
+nav ul li a {
+    padding: 7px 13px;
+    border-radius: 3px;
+    margin-left: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    
+}
+    nav ul li a:hover {
+        background-color: rgb(255 255 255 / 0.5);
+        transition: .5s;
+       
+    }
+

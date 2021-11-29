@@ -1,0 +1,53 @@
+﻿@model ModeloAdministrador
+
+@{ 
+    ViewData["Title"] = "ArmaRegistro";
+    Layout = "_Administrador";
+}
+
+<div class="text-center text-white titulo-panel mt-2 ">
+    <h1>
+       Almacen
+    </h1>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="row">
+
+            @foreach (ModeloArma arma in Model.lstMA)
+            {
+
+                <div class="col-12 col-md-6 col-lg-3 p-2">
+
+                    <div class="card tarjeta">
+                        <img src="@arma.dirFoto" alt="Alternate Text" />
+                        <label class="text-center text-white mt-3 border-top  pt-2 h4">@arma.Nombre</label>
+                        <label class="text-center text-warning h4">$@arma.Precio dlls</label>
+                        <label class="text-left text-white mt-3 pt-2 h5">Tipo: @arma.dTipo</label>
+                        <label class="text-left text-white mt-3 pt-2 h5">Estado: @arma.dEstado</label>
+                        <label class="text-left text-white mt-3 pt-2 h5">Float: @arma.Float</label>
+
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = arma.idArma }, new {@class = "borrar"})
+
+                    </div>
+
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<div class="text-center mt-3 p-2">
+
+    <a asp-controller="Home" asp-action="Administrador" class="menu detalles text-white h2">Regresar</a>
+
+</div>
+  
+
+

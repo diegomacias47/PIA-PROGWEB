@@ -1,0 +1,45 @@
+﻿
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<canvas id="bar" width="200" height="100"></canvas>
+
+
+<script type="text/javascript">
+
+
+    let grafica = document.getElementById('bar').getContext('2d');
+
+
+    var c = new Chart(grafica, {
+        type: 'bar',
+        data: {
+            labels: ['001','002','003'],
+            datasets: [
+                {
+                    label: 'Barra',
+                    data: [100, 200, 300],
+                    backgroundcolor: 'rgb(255,255,255)'
+                }
+            ]
+
+
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+
+
+</script>

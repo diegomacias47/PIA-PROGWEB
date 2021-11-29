@@ -1,0 +1,62 @@
+﻿@model ModeloArma
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Agregar Arma</h1>
+
+<form method="post" asp-controller="Home" asp-action="Index">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" placeholder="Nombre del arma..." value=""/>
+        <span class="text-danger" asp-validation-for="Nombre"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tipo"></label>
+        <select class="form-control" asp-for="Tipo" asp-items="@(new SelectList((Model.lsT), nameof(Tipo.IdTipo), nameof(Tipo.Descripcion)))">
+            <option>Escoga una opcion...</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="Tipo"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Estado"></label>
+        <select  class="form-control" asp-for="Estado" asp-items="@(new SelectList((Model.lstE), nameof(Estado.IdEstado), nameof(Estado.Descripcion)))">
+            <option>Escoga una opcion...</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="Estado"></span>
+    </div>
+
+
+    <!--<div class="form-group">
+        <label asp-for="Tipo"></label>
+        <input asp-for="Tipo" class="form-control" />
+        <span class="text-danger" asp-validation-for="Tipo"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Estado"></label>
+        <input asp-for="Estado" class="form-control" />
+        <span class="text-danger" asp-validation-for="Estado"></span>
+    </div>
+    -->
+    <div class="form-group">
+        <label asp-for="Precio"></label>
+        <input asp-for="Precio" class="form-control" placeholder="Precio..." value=""/>
+        <span class="text-danger" asp-validation-for="Precio"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Float"></label>
+        <input asp-for="Float" class="form-control" placeholder="Float..." value=""/>
+
+    </div>
+    <button type="submit">Enviar</button>
+
+</form>

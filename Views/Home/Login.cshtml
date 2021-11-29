@@ -1,0 +1,43 @@
+﻿@model ModeloUsuario
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_Login";
+}
+
+
+    
+<div class="card p-2 form-tarjeta formulario">
+    <h1>Inicio de sesión</h1>
+    <form method="post" asp-controller="Home" asp-action="Reedireccion" class="">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="Correo">Correo electronico:</label>
+            <input type="email" asp-for="Correo" class="form-control " placeholder="Correo del usuario..." value="" />
+            <span class="text-danger" asp-validation-for="Correo"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Contrasena">Contraseña:</label>
+            <input type="password" asp-for="Contrasena" class="form-control" placeholder="Contraseña del usuario..." value="" />
+            <span class="text-danger" asp-validation-for="Contrasena"></span>
+        </div>
+
+        <button class="" type="submit">Iniciar Sesión</button>
+        <br />
+        <span>¿No tienes una cuenta? Registra una cuenta <a asp-controller="Home" asp-action="UsuarioRegistro">aquí</a></span>
+    </form>
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+

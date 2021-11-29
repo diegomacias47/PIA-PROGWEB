@@ -1,0 +1,130 @@
+﻿@model ModeloTienda
+@{
+    ViewData["Title"] = "Tienda";
+    Layout = "_Tienda";
+}
+
+
+<div class="text-center text-white titulo-panel mt-2">
+    <h1 class="">Tienda</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-4">
+        <div class="text-center titulo-panel2 mt-2">
+            <h1 class="">Mi perfil</h1>
+            <label>@Model.usuario.idUsuario</label>
+            <label>@Model.usuario.Rol</label>
+            
+        </div>
+        <div class="card tarjeta">
+
+            <div>
+                <!--  <a href="#" class="tuerca"><i class="fas fa-cog " style="font-size: 28px;"></i></a>-->
+                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fas fa-cog " style="font-size: 28px;"></i>
+                </button>
+
+            </div>
+
+
+            <img src="~/img/Imagen2.png" alt="Alternate Text" />
+
+            <div class="text-center">
+                <label class="text-white usuario w-100">@Model.usuario.Nombre</label>
+                <label class="text-warning">$@Model.usuario.Fondos dlls</label>
+            </div>
+
+            <a asp-controller="Home" asp-action="ArmaRegistro" class="text-white menu detalles text-center"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
+            <a asp-controller="Home" asp-action="Login" class="text-white menu detalles text-center"><i class="fas fa-arrow-alt-circle-left"></i> Cerrar sesión</a>
+
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-8">
+
+        <div class="text-center titulo-panel2 mt-2">
+            <h1 class="">Catalogo</h1>
+        </div>
+        <div class="row">
+
+            @foreach (Arma arma in Model.lstA)
+            {
+
+                <div class="col-12 col-md-6 col-lg-4 p-2">
+
+                    <div class="card tarjeta">
+                        <img src="@arma.Foto" alt="Alternate Text" />
+                        <label class="text-center text-white mt-3 border-top  pt-2">@arma.Nombre</label>
+                        <label class="text-center text-warning">$@arma.Precio dlls</label>
+
+                        <a class="ml-2 mr-2 mb-2 text-white detalles text-center text-decoration-none" asp-controller="Home" asp-action="ArmaDetalles" asp-route-id="@arma.IdArma"> <i class="fas fa-info"></i> Detalles</a>
+                        <a class="ml-2 mr-2 mb-2 text-white detalles text-center text-decoration-none" asp-controller="Home" asp-action="Prueba" asp-route-id="@arma.IdArma"> <i class="fas fa-cart-plus"></i> Agregar al carrito</a>
+                        @Html.ActionLink("Añadir al carrito", "Tienda", new { id = Model.usuario.idUsuario, idArma = arma.IdArma, mt = Model }, new { @class = "borrar" })
+                    </div>
+
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Mi Perfil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-controller="Home" asp-action="Tienda">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        <label asp-for="usuario.idUsuario"></label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="usuario.Nombre">Nombre de usuario:</label>
+                        <input asp-for="usuario.Nombre" class="form-control" placeholder="Nombre del usuario..." value="@Model.usuario.Nombre" />
+                        <span class="text-danger" asp-validation-for="usuario.Nombre"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="usuario.Correo">Nombre de usuario:</label>
+                        <input type="email" asp-for="usuario.Correo" class="form-control" placeholder="Correo del usuario..." value="@Model.usuario.Correo" />
+                        <span class="text-danger" asp-validation-for="usuario.Correo"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="usuario.Contrasena">Nombre de usuario:</label>
+                        <input type="password" asp-for="usuario.Contrasena" class="form-control" placeholder="Contraseña del usuario..." value="@Model.usuario.Contrasena" />
+                        <span class="text-danger" asp-validation-for="usuario.Contrasena"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="usuario.Fondos">Fondos:</label>
+                        <input asp-for="usuario.Fondos" class="form-control" placeholder="Nombre del usuario..." value="@Model.usuario.Fondos" />
+                        <span class="text-danger" asp-validation-for="usuario.Fondos"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="usuario.Rol"></label>
+                    </div>
+                    <button type="submit">Guardar cambios</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

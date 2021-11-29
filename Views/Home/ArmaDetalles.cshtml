@@ -1,0 +1,41 @@
+﻿@model ModeloArma
+
+
+@{
+    ViewData["Title"] = "Prueba";
+    Layout = "_Tienda";
+}
+
+<div class="text-center text-white titulo-panel mt-2">
+    <h1 class="">Detalles del arma</h1>
+</div>
+
+
+
+
+    <div class="card tarjeta2">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-12 text-center mt-3 mb-3">
+                <img src="@Model.dirFoto" class="imagen-detalle" alt="Alternate Text" />
+
+            </div>
+            <div class="col-lg-8 col-12 mt-3">
+                <label class="text-white h1 w-9 border-bottom">
+                    @Model.Nombre
+                </label>
+                <label class="text-warning h2 w-100 ">$@Model.Precio dlls  </label>
+                <label class="text-white h2 w-100">Tipo: @Model.dTipo </label>
+                <label class="text-white h2 w-100">Estado: @Model.dEstado </label>
+                <label class="text-white h2 w-100 mb-4">Float: @Model.Float </label>
+                <!--   <a class="text-white detalles text-center a-margen h6">Añadir al carrito</a>-->
+            </div>
+
+        </div>
+</div>
+
+
+
+
+ 

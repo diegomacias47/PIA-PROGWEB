@@ -1,0 +1,91 @@
+﻿@model ModeloAdministrador 
+
+@{
+    ViewData["Title"] = "Administrador";
+    Layout = "_Administrador";
+
+}
+
+<div class="text-center text-white titulo-panel mt-2">
+    <h1>
+        Panel de administrador
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-3">
+        <div class="card tarjeta-2">
+            <img src="~/img/Imagen2.png" class="imagen-perfil " alt="Terrorista" />
+
+            <label class="text-white h5 text-center w-100 mt-1">Administrador</label>            
+
+        </div>
+
+        <div class="card tarjeta-2">
+            
+            <a asp-controller="Home" asp-action="ArmaRegistro" class="p-2 text-decoration-none text-white menu detalles enlace  "> <i class="fas fa-plus"></i> Registrar arma</a>
+            <a asp-controller="Home" asp-action="ArmaModificar" class="p-2 text-decoration-none text-white menu detalles enlace  "> <i class="fas fa-cog"></i> Modificar arma</a>
+            <a asp-controller="Home" asp-action="Login" class="p-2 text-white menu detalles text-justify "><i class="fas fa-arrow-alt-circle-left"></i> Cerrar sesión</a>
+        </div>
+
+
+    </div>
+    <div class="col-sm-12 col-lg-9 ">
+        <div class="card tarjeta-2">
+            <canvas class="text-center" id="bar" width="20" height="10"></canvas>
+
+        </div> 
+        </div>
+
+    </div>
+
+       
+    
+
+
+
+<script type="text/javascript">
+
+    var arreglo = @Html.Raw(Json.Serialize(Model.lstal));
+    var arma = [];
+    var cantidad = [];
+
+    for (var iterador = 0; iterador < arreglo.length; iterador++) {
+        arma.push(arreglo[iterador].des);
+        cantidad.push(arreglo[iterador].tam);
+    }
+   
+    let grafica = document.getElementById('bar').getContext('2d');
+    var c = new Chart(grafica, {
+        type: 'bar',
+        data: {
+            labels: arma,
+            datasets: [
+                {
+                    label: 'Armas en el almacen',
+                    data: cantidad,
+                    backgroundColor: '#d60235',
+                    color: '#rgb(0,255,0)',
+                    borderColor: 'rgba(0,0,255,.1)'
+                }
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+
+
+
+
+
+
+
+</script>
+
